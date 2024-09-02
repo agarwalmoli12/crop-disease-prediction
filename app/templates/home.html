@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% block pagetitle %}Plant Disease Detection{% endblock pagetitle %}
+{% block body %}
+
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f5f9;
+    color: #333;
+  }
+  .hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    padding: 120px 0;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+  .plant-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  .plant-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+  .btn-custom {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 30px;
+  }
+  .btn-custom:hover {
+    background-color: #45a049;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  .section-title {
+    position: relative;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+  }
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: #4CAF50;
+  }
+  .how-it-works-icon {
+    font-size: 3rem;
+    color: #4CAF50;
+    margin-bottom: 20px;
+  }
+</style>
+
+<div class="hero text-center">
+  <h1 class="display-3 mb-4">Plant Disease Detection</h1>
+  <p class="lead mb-5">Harness the power of AI to identify and manage plant diseases effectively</p>
+  <a href="/index" class="btn btn-custom btn-lg">Launch AI Engine</a>
+</div>
+
+<div class="container mt-5">
+  <h2 class="text-center mb-5 section-title">Supported Plants</h2>
+  <div class="row" id="plant-container"></div>
+</div>
+
+<div class="bg-light py-5 mt-5">
+  <div class="container">
+    <h2 class="text-center mb-5 section-title">How It Works</h2>
+    <div class="row">
+      <div class="col-md-4 text-center mb-4">
+        <i class="fas fa-camera how-it-works-icon"></i>
+        <h4>1. Take a Photo</h4>
+        <p>Capture a clear image of the plant you want to analyze</p>
+      </div>
+      <div class="col-md-4 text-center mb-4">
+        <i class="fas fa-upload how-it-works-icon"></i>
+        <h4>2. Upload</h4>
+        <p>Upload the image to our AI engine</p>
+      </div>
+      <div class="col-md-4 text-center mb-4">
+        <i class="fas fa-check-circle how-it-works-icon"></i>
+        <h4>3. Get Results</h4>
+        <p>Receive instant analysis and disease detection results</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const plants = [
+    {name: "Apple", image: "https://post.healthline.com/wp-content/uploads/2020/09/Do_Apples_Affect_Diabetes_and_Blood_Sugar_Levels-732x549-thumbnail-1-732x549.jpg", description: "Detect various apple diseases"},
+    {name: "Blueberry", image: "https://www.supermarketperimeter.com/ext/resources/0430-blueberries.png?t=1588260305&width=1080", description: "Identify blueberry plant issues"},
+    {name: "Cherry", image: "https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/slideshows/health_benefits_of_cherries_slideshow/1800x1200_health_benefits_of_cherries_slideshow.jpg", description: "Diagnose cherry tree problems"},
+    {name: "Corn", image: "https://www.mayoclinichealthsystem.org/-/media/national-files/images/hometown-health/2018/corn.jpg", description: "Analyze corn plant health"},
+    {name: "Grape", image: "https://i.ndtvimg.com/i/2015-09/grapes_625x350_61443376353.jpg", description: "Detect grape vine diseases"},
+    {name: "Orange", image: "https://www.irishtimes.com/polopoly_fs/1.3923226.1560339148!/image/image.jpg_gen/derivatives/ratio_1x1_w1200/image.jpg", description: "Identify citrus diseases"},
+    {name: "Peach", image: "https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/the_health_benefits_of_peaches_slideshow/thinkstock_rf_peaches.jpg?resize=650px:*", description: "Diagnose peach tree issues"},
+    {name: "Pepper Bell", image: "https://snaped.fns.usda.gov/sites/default/files/styles/crop_ratio_7_5/public/seasonal-produce/2018-05/bell%20peppers.jpg?h=9f30bee3&itok=PKmzyeNv", description: "Analyze bell pepper plant health"},
+    {name: "Potato", image: "https://m.economictimes.com/thumb/height-450,width-600,imgsize-111140,msid-72862126/potato-getty.jpg", description: "Detect potato plant diseases"},
+    {name: "Raspberry", image: "https://i0.wp.com/cdn-prod.medicalnewstoday.com/content/images/articles/326/326272/raspberries-with-ketones-in-a-bowl.jpg?w=1155&h=1541", description: "Identify raspberry bush problems"},
+    {name: "Soybean", image: "https://m.economictimes.com/thumb/msid-66988154,width-1200,height-900,resizemode-4,imgsize-211276/soyabean-agencies.jpg", description: "Analyze soybean plant health"},
+    {name: "Squash", image: "https://post.healthline.com/wp-content/uploads/2020/08/squash-fruit-or-vegetable-732x549-thumbnail-732x549.jpg", description: "Detect squash plant issues"},
+    {name: "Strawberry", image: "https://images.indianexpress.com/2020/02/strawberry-1200.jpg", description: "Diagnose strawberry plant diseases"},
+    {name: "Tomato", image: "https://images-prod.healthline.com/hlcmsresource/images/AN_images/tomatoes-1296x728-feature.jpg", description: "Identify tomato plant problems"}
+  ];
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const plantContainer = document.getElementById('plant-container');
+    plants.forEach(plant => {
+      const plantCard = `
+        <div class="col-md-3 col-sm-6 mb-4">
+          <div class="card plant-card h-100">
+            <img src="${plant.image}" class="card-img-top" alt="${plant.name}" style="height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">${plant.name}</h5>
+              <p class="card-text">${plant.description}</p>
+            </div>
+          </div>
+        </div>
+      `;
+      plantContainer.innerHTML += plantCard;
+    });
+  });
+</script>
+{% endblock body %}

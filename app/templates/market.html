@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block pagetitle %}Supplement Market{% endblock pagetitle %}
+
+{% block body %}
+<div class="container">
+    <div class="row mb-5 text-center">
+        <div class="col-lg-10 mx-auto">
+            <h1 class="display-4 text-success"><i class="fas fa-shopping-cart"></i> Supplements Market</h1>
+            <p class="lead text-muted">Buy supplements and fertilizers in one place</p>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for index in range(0, supplement_name|length) %}
+        {% if index != 4 %}
+        <div class="col-md-4 col-sm-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    {% if index in [3, 5, 7, 11, 15, 18, 20, 23, 24, 25, 28, 38] %}
+                    <h5 class="card-title">Fertilizer <span class="badge bg-success">Healthy</span></h5>
+                    {% else %}
+                    <h5 class="card-title">Supplement <span class="badge bg-danger">Diseased</span></h5>
+                    {% endif %}
+                    
+                    <img src="{{ supplement_image[index] }}" alt="{{ supplement_name[index] }}" class="img-fluid mb-3" style="max-height: 200px;">
+                    
+                    <h6 class="card-subtitle mb-2 text-muted">For {{ disease[index] }}</h6>
+                    <p class="card-text">{{ supplement_name[index] }}</p>
+                    
+                    <a href="{{ buy[index] }}" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-shopping-bag"></i> Buy Product
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.3s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+</style>
+{% endblock body %}

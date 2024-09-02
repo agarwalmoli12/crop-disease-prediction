@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block pagetitle %}Contact Us{% endblock pagetitle %}
+
+{% block body %}
+<div class="container">
+    <div class="row mb-5 text-center">
+        <div class="col-lg-10 mx-auto">
+            <h1 class="display-4 text-success"><i class="fas fa-phone-alt"></i> Contact Us</h1>
+            <p class="lead text-muted">For any queries or suggestions, please reach out. We're here to help!</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Manthan Bhikadiya</h3>
+                    <p class="card-text">Hi, I'm Manthan Bhikadiya, currently pursuing a Bachelor's in Information Technology. My main focus is on Machine Learning, Deep Learning, and Artificial Intelligence. I'm also interested in Blockchain and Flutter App Development.</p>
+                    <h5 class="mt-4 mb-3">Connect with me:</h5>
+                    <div class="d-flex flex-wrap">
+                        <a href="mailto:bhikadiyamanthan@gmail.com" class="btn btn-outline-primary me-2 mb-2" target="_blank"><i class="fas fa-envelope"></i> Email</a>
+                        <a href="https://manthan-bhikadiya.medium.com" class="btn btn-outline-secondary me-2 mb-2" target="_blank"><i class="fab fa-medium"></i> Medium</a>
+                        <a href="https://github.com/manthan89-py" class="btn btn-outline-dark me-2 mb-2" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://www.linkedin.com/in/manthanbhikadiya" class="btn btn-outline-info me-2 mb-2" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Krishna Baldaniya</h3>
+                    <p class="card-text">Hi, I'm Krishna Baldaniya, an entrepreneur and co-founder at KrsikX India LLP, an Agri-Tech Startup. Currently pursuing a Bachelor's in Information Technology, my main focus is on Cloud Computing and Mobile App Development.</p>
+                    <h5 class="mt-4 mb-3">Connect with me:</h5>
+                    <div class="d-flex flex-wrap">
+                        <a href="mailto:krishna.baldaniya93@gmail.com" class="btn btn-outline-primary me-2 mb-2" target="_blank"><i class="fas fa-envelope"></i> Email</a>
+                        <a href="https://www.instagram.com/krishna.baldaniya/" class="btn btn-outline-danger me-2 mb-2" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                        <a href="https://www.linkedin.com/in/krishna-baldaniya-5547381a1/" class="btn btn-outline-info me-2 mb-2" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.3s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+</style>
+{% endblock body %}
