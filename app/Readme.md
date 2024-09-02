@@ -137,12 +137,11 @@ We welcome contributions to improve the project! Please follow the standard fork
 
 This project is licensed under the MIT License - see the `LICENSE` file for details.
 
-## 👥 Authors
+## 👥 Author
 
-- **Manthan Bhikadiya**
-- **Krishna Baldaniya**
+- **Santosh Maurya**
 
-For any queries, please contact: krsikx@gmail.com
+
 
 ---
 
